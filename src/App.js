@@ -1,25 +1,73 @@
-import logo from './logo.svg';
-import './App.css';
+  import './App.css';
+  import './pages/about.css';
+  import React from 'react';
+  import Navbar from './components/Navbar';
+  import {
+    BrowserRouter as Router,
+    Routes,
+    Route
+  }
+  from 'react-router-dom';
+  import Home from './pages/index';
+  import About from './pages/about';
+  import Blogs from './pages/blogs';
+  import SignUp from './pages/signup';
+  import Contact from './pages/contact';
+  import Sessions from './pages/sessions';
+  import Test from './pages/test';
+  import Student from './pages/student';
+  import FooterPage from './components/footer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  function App() {
+    return (
+      <Router>
+      <Navbar/>
 
-export default App;
+      <Routes>
+      <Route exact path = '/home'
+       element = {
+        <Home/>
+      }
+      />
+      <Route path = '/about'
+      element = {
+        <About/>
+      }
+      />
+      <Route path = '/contact'
+      element = {
+        <Contact/>
+      }
+      />
+       <Route path = '/student'
+      element = {
+        <Student/>
+      }
+      />  
+        <Route path = '/test'
+      element = {
+        <Test/>
+      }
+      />  
+       <Route path = '/sessions'
+      element = {
+        <Sessions/>
+      }
+      />
+      <Route path = '/blogs'
+      element = {
+        <Blogs/>
+      }/>
+      <Route path = '/sign-up'
+      element = {
+        <SignUp/>
+      }
+      />
+      </Routes>
+
+      <FooterPage/>
+      </Router>
+    );
+  }
+
+  export default App;
