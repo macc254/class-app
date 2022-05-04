@@ -1,6 +1,6 @@
   import './App.css';
   import './pages/about.css';
-  import React from 'react';
+  import React, { useEffect, useState } from 'react';
   import Navbar from './components/Navbar';
   import {
     BrowserRouter as Router,
@@ -8,6 +8,7 @@
     Route
   }
   from 'react-router-dom';
+
   import Home from './pages/index';
   import About from './pages/about';
   import Blogs from './pages/blogs';
@@ -16,9 +17,12 @@
   import Sessions from './pages/sessions';
   import Test from './pages/test';
   import Student from './pages/student';
+  import UserForm from './pages/commentform';
+
   import FooterPage from './components/footer';
 
   function App() {
+   
     return (
       <Router>
       <Navbar/>
@@ -54,6 +58,11 @@
         <Sessions/>
       }
       />
+        <Route path = '/commentform'
+      element = {
+        <UserForm/>
+      }
+      />
       <Route path = '/blogs'
       element = {
         <Blogs/>
@@ -64,7 +73,8 @@
       }
       />
       </Routes>
-
+     
+  );
       <FooterPage/>
       </Router>
     );

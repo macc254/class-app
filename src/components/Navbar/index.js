@@ -12,8 +12,8 @@ const Navbar = () => {
         <>
         <Nav>
         <NavMenu>
-        <NavLink to = "/home"activeStyle>Home </NavLink>
-        <NavLink to = "/about"activeStyle>Announcements </NavLink>
+        <NavLink to = "/home"activestyle="true">Home </NavLink>
+        <NavLink to = "/about"activestyle="true">Announcements </NavLink>
         <Form className="d-flex">
         <FormControl
           type="search"
@@ -23,8 +23,10 @@ const Navbar = () => {
         />
         <Button variant="outline-primary"  size="sm">Search</Button>
       </Form>
-        <NavLink to = "/sign-up"activeStyle >Profile </NavLink>
-        <NavLink to = "/blogs"activeStyle >Logout </NavLink>
+        <NavLink to = "/sign-up"activestyle="true" >Profile </NavLink>
+        <NavLink to = "/blogs"activestyle="true" >Logout </NavLink>
+        <NavLink to = "/commentform"activestyle="true" >comment</NavLink>
+
         </NavMenu>
         </Nav>
         </>
