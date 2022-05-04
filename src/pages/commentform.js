@@ -1,48 +1,57 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState, useEffect }  from 'react';
+import './about.css';
+import {  Row, Col } from 'react-grid';
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card'  
+import List from './List';
+import withListLoading from './withListLoading';
 
-const UserForm = () => {
-  
-  const [formValue, setformValue] = React.useState({
-    email: '',
-    password: ''
-  });
 
-  const handleSubmit = (event) => {
-    // we will fill this in the coming paragraph
-  }
 
-  const handleChange = (event) => {
-    setformValue({
-      ...formValue,
-      [event.target.name]: event.target.value
-    });
-  }
+const CommentForm = () => {
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <p>Login Form</p>
-      <input
-        type="email"
-        name="email"
-        placeholder="enter an email"
-        value={formValue.email}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="enter a password"
-        value={formValue.password}
-        onChange={handleChange}
-      />
-      <button
-        type="submit"
-      >
-        Login
-      </button>
-    </form>
-  )
+    return (
+<Container fluid>
+
+  <Row>   
+  <Col  sm={2} style={{background: "#18183D", color:"white", overflow: 'hidden',}}>
+    <h3>All</h3>
+    <Card.Link style={{color: "white"}}href="/student">Courses</Card.Link>   
+    <h6>Students</h6>
+    <Card.Link style={{color: "white"}}href="/sessions">Sessions</Card.Link> 
+
+ 
+  </Col>
+  <Col sm={10}><h2>| Announcements</h2>
+  <form>
+  <label>
+    Name:
+    <input type="text" name="name" />
+  </label>
+  <input type="submit" value="Submit" />
+</form>
+ <footer>
+        <div className='footer'>
+          Built with {' '}
+          <span role='img' aria-label='love'>
+            💚
+          </span>{' '}
+           by Group 10
+        </div>
+  </footer>
+   
+    
+
+    
+  </Col>
+    
+  </Row>
+</Container>
+
+
+    );
 };
 
-export default UserForm;
+export default CommentForm;
+

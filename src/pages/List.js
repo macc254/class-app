@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, ModalFooter, ModalHeader, ModalBody, Modal } from 'react-bootstrap';
 import './about.css';
 import {  Row, Col } from 'react-grid';
@@ -11,6 +11,12 @@ import CommentForm from "react-comment-form";
 
 
 const List = (props) => {
+  const [name, setName] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`The name you entered was: ${name}`)
+  }
   const [isOpen, setIsOpen] = React.useState(false);
 
   const showModal = () => {
@@ -21,7 +27,10 @@ const List = (props) => {
     setIsOpen(false);
   };
   const { announcements } = props;
-  if (!announcements || announcements.length === 0) return <p>No Announcements, sorry</p>;
+  if (!announcements || announcements.length === 0)
+  return <p>No Announcements, sorry</p>;
+
+ 
   return (
     <Container fluid>
     <h2 className='list-head'>Available Announcements</h2>
@@ -53,18 +62,30 @@ const List = (props) => {
     `}
   </style>
 
-  <Button  href  = "/commentform"variant="flat" size="sm">
-    Comment
-  </Button>
+ 
   <>
       <Button onClick={showModal} variant="flat" size="sm">
     Comment
   </Button>
       <Modal show={isOpen} onHide={hideModal}>
         <Modal.Header>
-          <Modal.Title>Title-dummy data</Modal.Title>
+          <Modal.Title>Comment</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Body</Modal.Body>
+        <Modal.Body>
+          <form>
+          <label>
+        <input 
+          type="text" 
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label> 
+      <input type="submit"  />
+      <Button type='submit'variant="flat" size="sm">
+    Submit
+  </Button>
+          </form>
+        </Modal.Body>
         <Modal.Footer>
           <button onClick={hideModal}>Cancel</button>
           <button>Save</button>
@@ -72,14 +93,14 @@ const List = (props) => {
       </Modal>
     </>
 
-  
+
 
  
 </Card.Body>
     </Card>
     </Col>
     </Row>
-          
+
         );
       })}
           </Container>

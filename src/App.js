@@ -11,6 +11,9 @@
 
   import Home from './pages/index';
   import About from './pages/about';
+  import CommentForm from './pages/commentform';
+  import NameForm from './pages/nameform';
+
   import Blogs from './pages/blogs';
   import SignUp from './pages/signup';
   import Contact from './pages/contact';
@@ -60,7 +63,11 @@
       />
         <Route path = '/commentform'
       element = {
-        <UserForm/>
+        <CommentForm/>
+      }
+      />  <Route path = '/nameform'
+      element = {
+        <NameForm/>
       }
       />
       <Route path = '/blogs'
@@ -73,9 +80,9 @@
       }
       />
       </Routes>
-     
-  );
       <FooterPage/>
+
+  );
       </Router>
     );
   }

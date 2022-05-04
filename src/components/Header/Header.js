@@ -1,6 +1,5 @@
 //import useState hook to create menu collapse state
-import React, { useState } from "react";
-
+c
 //import react pro sidebar components
 import {
   ProSidebar,
