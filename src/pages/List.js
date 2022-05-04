@@ -1,22 +1,47 @@
 import React, { useState } from 'react';
-import { Container, ModalFooter, ModalHeader, ModalBody, Modal } from 'react-bootstrap';
+import { Container, Modal } from 'react-bootstrap';
 import './about.css';
 import {  Row, Col } from 'react-grid';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card'  
-import CommentForm from "react-comment-form";
 
 
 
 
 const List = (props) => {
+  const [comment, setComment] = useState("");
+  const [date_posted, setDate] = useState("");
+  const [announcement, setAnnouncement] = useState("");
   const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`The name you entered was: ${name}`)
-  }
+  let handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch("https://class-schedule-app00.herokuapp.com/comments/", {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          announcement: announcement,
+          comment: comment,
+          date_posed: date_posted,
+        }),
+      });
+      let resJson = await res.json();
+      if (res.status === 200) {
+        setName("");
+        setComment("");
+
+        setMessage("Your comment has been received!");
+      } else {
+        setMessage("Some error occured");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
   const [isOpen, setIsOpen] = React.useState(false);
 
   const showModal = () => {
@@ -72,23 +97,30 @@ const List = (props) => {
           <Modal.Title>Comment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
-          <label>
-        <input 
-          type="text" 
+        <div className="App">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
           value={name}
+          placeholder="Name"
           onChange={(e) => setName(e.target.value)}
         />
-      </label> 
-      <input type="submit"  />
-      <Button type='submit'variant="flat" size="sm">
-    Submit
-  </Button>
-          </form>
+       
+       <input
+          type="text"
+          value={comment}
+          placeholder="Comment"
+          onChange={(e) => setComment(e.target.value)}
+        />
+
+        <Button variant="flat" size="sm" type="submit">Submit</Button>
+
+        <div className="message">{message ? <p>{message}</p> : null}</div>
+      </form>
+    </div>
         </Modal.Body>
         <Modal.Footer>
-          <button onClick={hideModal}>Cancel</button>
-          <button>Save</button>
+          <Button variant="flat" size="sm" onClick={hideModal}>Close</Button>
         </Modal.Footer>
       </Modal>
     </>

@@ -25,7 +25,7 @@ const Navbar = () => {
       </Form>
         <NavLink to = "/sign-up"activestyle="true" >Profile </NavLink>
         <NavLink to = "/blogs"activestyle="true" >Logout </NavLink>
-        <NavLink to = "/commentform"activestyle="true" >comment</NavLink>
+        <NavLink to = "/commentform"activestyle="true" >Comment</NavLink>
 
         </NavMenu>
         </Nav>

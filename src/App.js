@@ -25,11 +25,16 @@
   import FooterPage from './components/footer';
 
   function App() {
+  
+  
    
     return (
+      <div className="lame">
+     
+  
       <Router>
       <Navbar/>
-
+    
       <Routes>
       <Route exact path = '/home'
        element = {
@@ -83,7 +88,8 @@
       <FooterPage/>
 
   );
-      </Router>
+      </Router>    </div>
+
     );
   }
 
